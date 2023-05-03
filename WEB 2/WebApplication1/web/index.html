@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+   
+    <head>
+        <title>Clientes</title>
+        <link href="micss.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div id="box1">Clientes empresa</div>
+        <form action="NewServlet" method="POST"> 
+            <P id="pe">Seleccione una accion</P>
+            <select id="accion" name="accion" placeholder="Accion">
+                <option value="mostrar">Mostrar clientes</option>
+                <option value="eliminar">Eliminar cliente</option>
+                <option value="agregar">Agregar cliente</option>
+            </select>
+
+            <div id="añcliente" style="display:none;">
+                <label for="nombre"></label>
+                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="text" name="apellido" placeholder="Apellido">
+                <input type="number" name="telefono" placeholder="Telefono">
+                <input type="number" name="cedula" placeholder="Cedula">
+            </div>         
+            
+            <div id="indice" style="display:none;">
+                <label for="ind"></label>
+                <input placeholder="Indique cedula del cliente" type="number" name="ind" id="ind">
+            </div>
+            
+            <button type="submit" value="Enviar">Enviar</button>
+            <button type="reset" value="Limpiar datos">Limpiar datos</button>
+
+            <script>
+                document.getElementById("accion").addEventListener("input", function() {
+                    var seleccion = document.getElementById("accion").value;
+                    if (seleccion === "agregar") {
+                      document.getElementById("añcliente").style.display = "block";
+                      document.getElementById("indice").style.display = "none";
+                    } 
+                    if (seleccion === "eliminar") {
+                      document.getElementById("añcliente").style.display = "none";
+                      document.getElementById("indice").style.display = "block";
+                    } 
+                    if (seleccion === "mostrar") {
+                      document.getElementById("añcliente").style.display = "none";
+                      document.getElementById("indice").style.display = "none";
+                    } 
+
+                });
+                
+            </script>   
+        </form>
+    </body>
+</html>
