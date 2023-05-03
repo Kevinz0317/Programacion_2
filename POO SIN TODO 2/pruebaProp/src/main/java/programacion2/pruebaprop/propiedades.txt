@@ -1,0 +1,4 @@
+JON: 10
+TYRION: 20
+ARYA: 40
+KHAL: 6
