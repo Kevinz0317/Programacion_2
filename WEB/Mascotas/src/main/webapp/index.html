@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rescate de Mascotas</title>
+</head>
+<body>
+    <h1>Rescate de Mascotas</h1>
+    <h2>Agregar Mascota</h2>
+    <form method="post" action="<%= request.getContextPath() %>/mascotas">
+        <label for="tipo">Tipo:</label>
+        <select name="tipo" id="tipo">
+            <option value="canino">Canino</option>
+            <option value="felino">Felino</option>
+        </select>
+        <br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" required>
+        <br>
+        <label for="raza">Raza:</label>
+        <input type="text" name="raza" required>
+        <br>
+        <label for="color">Color:</label>
+<input type="text" name="color" required>
+<br>
+<label for="edad">Edad:</label>
+<input type="number" name="edad" required>
+<br>
+<div id="nivel-entrenamiento" style="display: none;">
+<label for="nivelEntrenamiento">Nivel de Entrenamiento:</label>
+<input type="range" name="nivelEntrenamiento" min="0" max="10" step="1" value="5">
+<br>
+</div>
+<div id="libre-toxoplasmosis" style="display: none;">
+<label for="libreToxoplasmosis">Libre de Toxoplasmosis:</label>
+<input type="checkbox" name="libreToxoplasmosis">
+<br>
+</div>
+<button type="submit">Agregar Mascota</button>
+</form>
+<hr>
+<h2>Información de Mascotas</h2>
+<p>Total de Caninos: <%= totalCaninos %></p>
+<p>Total de Felinos: <%= totalFelinos %></p>
+<p>Edad Promedio: <%= edadPromedio %></p>
+<hr>
+<h2>Mascotas Disponibles</h2>
+<table>
+<tr>
+<th>Tipo</th>
+<th>Nombre</th>
+<th>Raza</th>
+<th>Color</th>
+<th>Edad</th>
+<th>Nivel de Entrenamiento</th>
+<th>Libre de Toxoplasmosis</th>
+</tr>
+<% for (Mascota mascota : mascotas) { %>
+<tr>
+<td><%= mascota.getClass().getSimpleName() %></td>
+<td><%= mascota.getNombre() %></td>
+<td><%= mascota.getRaza() %></td>
+<td><%= mascota.getColor() %></td>
+<td><%= mascota.getEdad() %></td>
+<% if (mascota instanceof Canino) { %>
+<td><%= ((Canino) mascota).getNivelEntrenamiento() %></td>
+<% } else { %>
+<td>-</td>
+<% } %>
+<% if (mascota instanceof Felino) { %>
+<td><%= ((Felino) mascota).isLibreDeToxoplasmosis() %></td>
+<% } else { %>
+<td>-</td>
+<% } %>
+</tr>
+<% } %>
+</table>
+<script>
+var tipo = document.getElementById("tipo");
+var nivelEntrenamiento = document.getElementById("nivel-entrenamiento");
+var libreToxoplasmosis = document.getElementById("libre-toxoplasmosis");
+    tipo.addEventListener("change", function() {
+        if (tipo.value === "canino") {
+            nivelEntrenamiento.style.display = "block";
+            libreToxoplasmosis.style.display = "none";
+        } else if (tipo.value === "felino") {
+            nivelEntrenamiento.style.display = "none";
+            libreToxoplasmosis.style.display = "block";
+        }
+    });
+</script>
+</body>
+</html>

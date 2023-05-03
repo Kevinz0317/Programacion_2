@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="newcss.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Start Page</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <input type="checkbox" id="check">
+            <input type="checkbox" id="check2">
+            <div class="login form">
+              <header>Iniciar Sesion</header>
+              <form action="CAcceso" method="POST">
+                <input type="text" name="cedulaid" placeholder="Ingresa tu cedula">
+                <input type="submit" class="button" value="Iniciar Sesion">
+              </form>
+              <div class="signup">
+                <span class="signup">Desea agregar?
+                    <label for="check">Agregar</label><br>
+                </span>
+                <span class="signup">Desea eliminar?
+                    <label for="check2">Eliminar</label>
+                </span>
+              </div>
+            </div>
+            <div class="registration form">
+              <header>Registro</header>
+              <form action="Elservlet" method="POST">
+                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="text" name="apellido" placeholder="Apellido">
+                <input type="number" name="telefono" placeholder="Telefono">
+                <input type="number" name="cedula" placeholder="Cedula">
+                <input type="submit" class="button" value="Registrar">
+              </form>
+              <div class="signup">
+                <span class="signup">Ya tienes una cuenta?
+                 <label for="check">Iniciar Sesion</label>
+                </span>
+              </div>
+            </div>
+            <div class="elimination form">
+              <header>Eliminar</header>
+              <form action="Eliminar" method="POST">
+                <input type="number" name="cedula" placeholder="Cedula">
+                <input type="submit" class="button" value="Eliminar">
+              </form>
+              <div class="signup">
+                <span class="signup">Ya tienes una cuenta?
+                 <label for="check">Iniciar Sesion</label>
+                </span>
+              </div>
+            </div>
+        </div>
+    </body>
+</html>
